@@ -154,7 +154,7 @@ export default function CredentialForm() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              placeholder="e.g. Windows Admin - CUROHS"
+              placeholder="e.g. Production SQL Server"
             />
           </div>
 

@@ -50,8 +50,8 @@ TEMPLATES: dict[str, CredentialTemplate] = {
         display_name="Windows / Active Directory",
         description="Credentials for Windows Remote Management (WinRM) and Active Directory authentication",
         fields=[
-            FieldDefinition(name="domain", label="Domain", field_type="string", default="CUROHS"),
-            FieldDefinition(name="username", label="Username", field_type="string", required=True, placeholder="svc_reliant"),
+            FieldDefinition(name="domain", label="Domain", field_type="string", placeholder="MYDOMAIN"),
+            FieldDefinition(name="username", label="Username", field_type="string", required=True, placeholder="svc_account"),
             FieldDefinition(name="password", label="Password", field_type="password", required=True, is_secret=True),
             FieldDefinition(name="auth_method", label="Auth Method", field_type="select", default="negotiate",
                             options=[
@@ -68,7 +68,7 @@ TEMPLATES: dict[str, CredentialTemplate] = {
         display_name="SSH Password",
         description="Username and password for SSH connections",
         fields=[
-            FieldDefinition(name="username", label="Username", field_type="string", required=True, placeholder="ghsadmin"),
+            FieldDefinition(name="username", label="Username", field_type="string", required=True, placeholder="svc_account"),
             FieldDefinition(name="password", label="Password", field_type="password", required=True, is_secret=True),
         ],
     ),
@@ -78,7 +78,7 @@ TEMPLATES: dict[str, CredentialTemplate] = {
         display_name="SSH Private Key",
         description="SSH key-based authentication",
         fields=[
-            FieldDefinition(name="username", label="Username", field_type="string", required=True, placeholder="ghsadmin"),
+            FieldDefinition(name="username", label="Username", field_type="string", required=True, placeholder="svc_account"),
             FieldDefinition(name="private_key", label="Private Key", field_type="textarea", required=True, is_secret=True,
                             placeholder="-----BEGIN OPENSSH PRIVATE KEY-----"),
             FieldDefinition(name="passphrase", label="Passphrase", field_type="password", is_secret=True,
@@ -128,7 +128,7 @@ TEMPLATES: dict[str, CredentialTemplate] = {
             FieldDefinition(name="client_id", label="Client ID", field_type="string", required=True),
             FieldDefinition(name="client_secret", label="Client Secret", field_type="password", required=True, is_secret=True),
             FieldDefinition(name="token_url", label="Token URL", field_type="string", required=True,
-                            default="https://login.microsoftonline.com/a94daf96-fc17-4872-bc82-ca272460874d/oauth2/v2.0/token"),
+                            placeholder="https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token"),
             FieldDefinition(name="scopes", label="Scopes", field_type="string",
                             placeholder="https://graph.microsoft.com/.default"),
         ],
@@ -139,7 +139,7 @@ TEMPLATES: dict[str, CredentialTemplate] = {
         display_name="Database",
         description="Database connection credentials (PostgreSQL, MySQL, SQL Server, etc.)",
         fields=[
-            FieldDefinition(name="host", label="Host", field_type="string", required=True, placeholder="dbserver.curohs.local"),
+            FieldDefinition(name="host", label="Host", field_type="string", required=True, placeholder="dbserver.example.local"),
             FieldDefinition(name="port", label="Port", field_type="number", default="1433"),
             FieldDefinition(name="database", label="Database Name", field_type="string", required=True),
             FieldDefinition(name="username", label="Username", field_type="string", required=True),
@@ -160,7 +160,7 @@ TEMPLATES: dict[str, CredentialTemplate] = {
         display_name="SMTP",
         description="Email server credentials for sending notifications",
         fields=[
-            FieldDefinition(name="host", label="SMTP Host", field_type="string", required=True, default="relay.curohs.com"),
+            FieldDefinition(name="host", label="SMTP Host", field_type="string", required=True, placeholder="smtp.example.com"),
             FieldDefinition(name="port", label="Port", field_type="number", default="587"),
             FieldDefinition(name="username", label="Username", field_type="string", required=True),
             FieldDefinition(name="password", label="Password", field_type="password", required=True, is_secret=True),
@@ -174,7 +174,7 @@ TEMPLATES: dict[str, CredentialTemplate] = {
         description="Azure AD app registration credentials for Azure resource access",
         fields=[
             FieldDefinition(name="tenant_id", label="Tenant ID", field_type="string", required=True,
-                            default="a94daf96-fc17-4872-bc82-ca272460874d"),
+                            placeholder="00000000-0000-0000-0000-000000000000"),
             FieldDefinition(name="client_id", label="Client ID", field_type="string", required=True),
             FieldDefinition(name="client_secret", label="Client Secret", field_type="password", required=True, is_secret=True),
         ],

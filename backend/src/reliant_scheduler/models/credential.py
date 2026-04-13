@@ -31,7 +31,7 @@ class Credential(TimestampMixin, Base):
     name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
     credential_type: Mapped[CredentialType] = mapped_column(String(64), nullable=False)
     description: Mapped[str | None] = mapped_column(Text)
-    # Non-secret fields stored directly: {"username": "svc_reliant", "domain": "CUROHS"}
+    # Non-secret fields stored directly: {"username": "svc_app", "domain": "MYDOMAIN"}
     fields: Mapped[dict | None] = mapped_column(JSONB)
     # Key Vault secret name references: {"password": "reliant-cred-abc123-password"}
     secret_refs: Mapped[dict | None] = mapped_column(JSONB)

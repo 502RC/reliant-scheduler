@@ -100,13 +100,15 @@ reliant-scheduler/
    ```bash
    cp .env.example .env
    ```
+   Edit `.env` if you need to change any defaults (e.g. set `FRONTEND_PORT` to
+   avoid a conflict with another process already using port 5173).
 
 2. Start all services:
    ```bash
    docker compose up
    ```
 
-3. Access the application:
+3. Access the application (substitute your `FRONTEND_PORT` if changed):
    - Frontend: http://localhost:5173
    - Backend API: http://localhost:8000
    - API docs: http://localhost:8000/docs

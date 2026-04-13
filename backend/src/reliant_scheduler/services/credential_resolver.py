@@ -21,7 +21,7 @@ async def resolve_credential(credential_id: uuid.UUID, session: AsyncSession) ->
     """Resolve a credential into a flat dict with all fields (secrets decrypted).
 
     Returns a dict like:
-    {"username": "svc_reliant", "password": "actual-secret-value", "domain": "CUROHS"}
+    {"username": "svc_app", "password": "actual-secret-value", "domain": "MYDOMAIN"}
 
     Secrets are fetched from Key Vault and never cached.
     """
