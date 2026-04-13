@@ -1,6 +1,6 @@
 # Reliant Scheduler
 
-Enterprise workload automation and job scheduling platform on Azure. Provides centralized orchestration of workloads across on-premises, cloud, and hybrid environments.
+Enterprise workload automation and job scheduling platform. Provides centralized orchestration of workloads across on-premises, cloud, and hybrid environments.
 
 ![Dashboard](docs/dashboard-screenshot.png)
 
@@ -14,22 +14,12 @@ Enterprise workload automation and job scheduling platform on Azure. Provides ce
                     ┌──────▼───────┐
                     │   FastAPI    │  (port 8000)
                     │   Backend    │
-                    └──┬───┬───┬───┘
-                       │   │   │
-          ┌────────────┘   │   └────────────┐
-          ▼                ▼                ▼
-   ┌──────────┐    ┌──────────────┐   ┌──────────┐
-   │ Service  │    │  PostgreSQL  │   │  Event   │
-   │   Bus    │    │   (v16)      │   │  Hubs    │
-   │ (queues) │    └──────────────┘   │ (events) │
-   └──────────┘                       └──────────┘
-          │                                 │
-          ▼                                 ▼
-   ┌──────────┐                       ┌──────────┐
-   │  Worker  │                       │   Blob   │
-   │  Nodes   │                       │ Storage  │
-   │  (AKS)   │                       │(artifacts│
-   └──────────┘                       └──────────┘
+                    └──────┬───────┘
+                           │
+                    ┌──────▼───────┐
+                    │  PostgreSQL  │
+                    │   (v16)      │
+                    └──────────────┘
 ```
 
 ## Tech Stack
@@ -38,11 +28,7 @@ Enterprise workload automation and job scheduling platform on Azure. Provides ce
 |----------------|---------------------------------------|
 | Frontend       | React 19, TypeScript, Vite            |
 | Backend        | Python 3.12, FastAPI, SQLAlchemy 2    |
-| Database       | PostgreSQL 16 (Azure Flexible Server) |
-| Messaging      | Azure Service Bus                     |
-| Event Stream   | Azure Event Hubs                      |
-| Object Storage | Azure Blob Storage                    |
-| Orchestration  | Azure Kubernetes Service (AKS)        |
+| Database       | PostgreSQL 16                         |
 | CI/CD          | GitHub Actions                        |
 
 ## Project Structure
