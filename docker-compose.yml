@@ -27,10 +27,7 @@ services:
       POSTGRES_DB: reliant_scheduler
       POSTGRES_USER: reliant
       POSTGRES_PASSWORD: changeme
-      ENTRA_CLIENT_ID: f645cb59-3146-489e-b263-312ae4581ec3
-      ENTRA_TENANT_ID: a94daf96-fc17-4872-bc82-ca272460874d
-      BACKEND_CORS_ORIGINS: "https://10.16.10.70:4443,http://localhost:5173"
-      AZURE_KEYVAULT_URL: "https://ghskvrltdeveus201.vault.azure.net/"
+      BACKEND_CORS_ORIGINS: "http://localhost:5173,http://localhost:5174"
     depends_on:
       postgres:
         condition: service_healthy
@@ -39,6 +36,8 @@ services:
     build:
       context: ./frontend
       target: prod
+      args:
+        VITE_AUTH_DISABLED: "true"
     ports:
       - "${FRONTEND_PORT:-5173}:80"
     depends_on:
