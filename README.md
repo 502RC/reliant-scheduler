@@ -2,6 +2,8 @@
 
 Enterprise workload automation and job scheduling platform on Azure. Provides centralized orchestration of workloads across on-premises, cloud, and hybrid environments.
 
+![Dashboard](docs/dashboard-screenshot.png)
+
 ## Architecture
 
 ```
@@ -41,7 +43,6 @@ Enterprise workload automation and job scheduling platform on Azure. Provides ce
 | Event Stream   | Azure Event Hubs                      |
 | Object Storage | Azure Blob Storage                    |
 | Orchestration  | Azure Kubernetes Service (AKS)        |
-| IaC            | Terraform                             |
 | CI/CD          | GitHub Actions                        |
 
 ## Project Structure
@@ -68,17 +69,6 @@ reliant-scheduler/
 │   │   └── lib/
 │   ├── Dockerfile
 │   └── package.json
-├── terraform/               # Azure infrastructure
-│   ├── modules/
-│   │   ├── aks/
-│   │   ├── eventhubs/
-│   │   ├── networking/
-│   │   ├── postgres/
-│   │   ├── servicebus/
-│   │   └── storage/
-│   ├── main.tf
-│   ├── variables.tf
-│   └── outputs.tf
 ├── .github/workflows/       # CI pipelines
 ├── docker-compose.yml       # Local development
 └── .env.example
@@ -91,8 +81,6 @@ reliant-scheduler/
 - Python 3.12+
 - Node.js 22+
 - Docker & Docker Compose
-- Terraform >= 1.9 (for infrastructure)
-- Azure CLI (for deployment)
 
 ### Local Development
 
@@ -138,17 +126,4 @@ cd backend && pytest --cov
 
 # Frontend
 cd frontend && npm run typecheck && npm run lint
-```
-
-## Infrastructure
-
-Terraform manages all Azure resources. See `terraform/terraform.tfvars.example` for configuration.
-
-```bash
-cd terraform
-cp terraform.tfvars.example terraform.tfvars
-# Edit terraform.tfvars with your Azure subscription ID
-terraform init
-terraform plan
-terraform apply
 ```
